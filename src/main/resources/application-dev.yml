@@ -1,0 +1,25 @@
+spring:
+  main:
+    allow-circular-references: true
+  datasource:
+    username: ${dbUser:root}
+    url: jdbc:mysql://localhost/gestaoEscolar?createDatabaseIfNotExist=true&serverTimezone=UTC
+    password: ${dbPass:1234}
+  flyway:
+    locations: classpath:db/migration
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: 'true'
+  mail:
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: 'true'
+          auth: 'true'
+    host: smtp.gmail.com
+    username: ${userEmail}
+    password: ${passwordEmail}
+    port: '587'

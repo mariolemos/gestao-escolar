@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: dev
+
+security:
+  token:
+    secret: gestaoescolar_api
+  oauth2:
+    client:
+      client-id: gestaoescolar_api@2024
+      client-secret: 'gestaoescolar_api@2024'
+      scope: password
+
+token:
+  sonar: sqp_10914f5b1d69c53b3be88074f84fc7a09f7721a0
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: health,metrics,prometheus
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
