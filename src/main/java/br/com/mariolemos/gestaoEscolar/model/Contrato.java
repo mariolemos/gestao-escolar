@@ -33,6 +33,8 @@ public class Contrato {
     private LocalDate dtFinal;
     @ManyToOne
     private Responsavel responsavel;
+    @Column(name = "ATIVO")
+    private Boolean ativo;
     @OneToMany
     @JoinColumn(name = "ALUNO_ID")
     private List<Aluno> alunos = new ArrayList<>();

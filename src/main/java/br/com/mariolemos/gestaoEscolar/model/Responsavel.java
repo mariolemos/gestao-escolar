@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-//@Table(name = "RESPONSAVEL")
+@Table(name = "RESPONSAVEL")
 public class Responsavel extends Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +28,6 @@ public class Responsavel extends Pessoa {
     @JoinColumn(name = "RESPONSAVEL_ID")
     private List<Contrato>  contratos = new ArrayList<>();
     @OneToMany
-    @JoinColumn(name = "ALUNO_ID")
+    @JoinColumn(name = "RESPONSAVEL_ID")
     private List<Aluno> alunos = new ArrayList<>();
 }

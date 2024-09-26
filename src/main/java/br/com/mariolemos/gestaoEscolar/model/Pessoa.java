@@ -11,8 +11,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "PESSOA")
+@MappedSuperclass
 public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,15 +19,15 @@ public class Pessoa {
     @Column(name = "ID")
     private Long id;
     @Column(name = "NOME")
-    public String nome;
-    @Column(name = "DATA_NASCIMENTO")
+    private String nome;
+    @Column(name = "DT_NASCIMENTO")
     private LocalDate dtNascimento;
     @Column(name = "CPF")
     private String cpf;
     @Column(name = "RG")
     private String rg;
     //private Endereco endereco;
-    @OneToMany
-    @Column(name = "PESSOA_ID")
-    private List<Contato> contatos = new ArrayList<Contato>();
+//    @OneToMany
+//    @Column(name = "PESSOA_ID")
+//    private List<Contato> contatos = new ArrayList<Contato>();
 }

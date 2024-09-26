@@ -10,14 +10,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "PESSOA")
+@Table(name = "ALUNO")
 public class Aluno extends Pessoa {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
-    @Column(name = "ID")
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @EqualsAndHashCode.Include
+//    @Column(name = "ID")
+//    private Long id;
     @Column(name = "TURNO")
     private String turno;
     @Column(name = "SERIE")
@@ -29,9 +29,10 @@ public class Aluno extends Pessoa {
     @Column(name = "NOME_DO_PAI")
     private String nomeDoPai;
     @Column(name = "CONVENIO_MEDICO")
-    private String convencioMedico;
+    private String convenioMedico;
+    @Column(name = "ATIVO")
+    private Boolean ativo;
     @ManyToOne
-    //@JoinColumn(name = "ALUNO_ID")
     private Responsavel responsavel;
     //private Colegio colegio;
 }
