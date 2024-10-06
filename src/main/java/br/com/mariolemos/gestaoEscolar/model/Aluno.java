@@ -34,5 +34,6 @@ public class Aluno extends Pessoa {
     private Boolean ativo;
     @ManyToOne
     private Responsavel responsavel;
-    //private Colegio colegio;
+    @ManyToOne
+    private Colegio colegio;
 }

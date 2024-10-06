@@ -20,7 +20,7 @@ public class Pessoa {
     private Long id;
     @Column(name = "NOME")
     private String nome;
-    @Column(name = "DT_NASCIMENTO")
+    @Column(name = "DATA_NASCIMENTO")
     private LocalDate dtNascimento;
     @Column(name = "CPF")
     private String cpf;

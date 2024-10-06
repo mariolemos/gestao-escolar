@@ -3,7 +3,7 @@ spring:
     allow-circular-references: true
   datasource:
     username: ${dbUser:root}
-    url: jdbc:mysql://localhost/gestaoEscolar?createDatabaseIfNotExist=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost/gestao_Escolar?createDatabaseIfNotExist=true&serverTimezone=UTC
     password: ${dbPass:1234}
   flyway:
     locations: classpath:db/migration
