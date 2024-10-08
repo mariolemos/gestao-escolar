@@ -15,13 +15,13 @@ import java.util.List;
 @Entity
 @Table(name = "RESPONSAVEL")
 public class Responsavel extends Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
-    @Column(name = "ID")
-    private Long id;
-    @Column(name = "NOME")
-    private String nome;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @EqualsAndHashCode.Include
+//    @Column(name = "ID")
+//    private Long id;
+//    @Column(name = "NOME")
+//    private String nome;
     @Column(name = "PARENTESCO")
     private String parentesco;
     @OneToMany
