@@ -29,6 +29,8 @@ public class Colegio {
     @OneToMany
     @JoinColumn(name = "COLEGIO_ID")
     private List<Aluno> alunos = new ArrayList<Aluno>();
-    //private List<Contato> conttos = new ArrayList<Contato>();
+    @OneToMany
+    @JoinColumn(name = "COLEGIO_ID")
+    private List<Contato> contatos = new ArrayList<Contato>();
 
 }

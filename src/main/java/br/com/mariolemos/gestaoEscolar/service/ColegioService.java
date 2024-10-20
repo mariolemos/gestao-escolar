@@ -28,6 +28,8 @@ public class ColegioService {
     }
     public Colegio atualizar(Colegio colegio, Long id){
         Colegio colegio1 = buscarPorId(id);
+        colegio1.setNome(colegio.getNome());
+        colegio1.setHorario(colegio.getHorario());
         return colegioRepository.save(colegio1);
     }
 

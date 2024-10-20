@@ -27,7 +27,7 @@ public class Pessoa {
     @Column(name = "RG")
     private String rg;
     //private Endereco endereco;
-//    @OneToMany
-//    @Column(name = "PESSOA_ID")
-//    private List<Contato> contatos = new ArrayList<Contato>();
+    @OneToMany
+    @Column(name = "PESSOA_ID")
+    private List<Contato> contatos = new ArrayList<Contato>();
 }

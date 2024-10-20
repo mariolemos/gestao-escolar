@@ -20,7 +20,7 @@ public class Contato {
     private Long id;
     @Column(name = "CONTATO")
     private String contato;
-    @Column(name = "TIPO")
+    @Column(name = "TIPO_CONTATO")
     private String tipo;
 
 }
