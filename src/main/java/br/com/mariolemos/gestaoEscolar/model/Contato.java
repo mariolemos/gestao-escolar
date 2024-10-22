@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,9 +21,12 @@ public class Contato {
     @EqualsAndHashCode.Include
     @Column(name = "ID")
     private Long id;
-    @Column(name = "CONTATO")
-    private String contato;
+    @Column(name = "NOME_CONTATO")
+    private String nomeContato;
     @Column(name = "TIPO_CONTATO")
     private String tipo;
-
+    @ManyToOne
+    private Aluno aluno;
+    @ManyToOne
+    private Responsavel responsavel;
 }

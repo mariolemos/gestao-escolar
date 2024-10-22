@@ -30,4 +30,9 @@ public class Responsavel extends Pessoa {
     @OneToMany
     @JoinColumn(name = "RESPONSAVEL_ID")
     private List<Aluno> alunos = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name = "RESPONSAVEL_ID")
+    private List<Contato> contatos = new ArrayList<Contato>();
+    @ManyToOne
+    private Endereco endereco;
 }

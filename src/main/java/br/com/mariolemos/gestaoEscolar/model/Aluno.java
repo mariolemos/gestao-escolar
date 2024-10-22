@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,7 +37,11 @@ public class Aluno extends Pessoa {
     private Boolean ativo;
     @ManyToOne
     private Responsavel responsavel;
-    @JsonIgnore
     @ManyToOne
     private Colegio colegio;
+    @OneToMany
+    @JoinColumn(name = "ALUNO_ID")
+    private List<Contato> contatos = new ArrayList<Contato>();
+    @ManyToOne
+    private Endereco endereco;
 }
