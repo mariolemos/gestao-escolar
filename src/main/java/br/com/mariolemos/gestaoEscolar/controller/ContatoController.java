@@ -2,6 +2,7 @@ package br.com.mariolemos.gestaoEscolar.controller;
 
 import br.com.mariolemos.gestaoEscolar.model.Contato;
 import br.com.mariolemos.gestaoEscolar.model.Responsavel;
+import br.com.mariolemos.gestaoEscolar.model.dto.response.ContatoResponse;
 import br.com.mariolemos.gestaoEscolar.service.ContatoService;
 import br.com.mariolemos.gestaoEscolar.service.ResponsavelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,9 @@ public class ContatoController {
         return ResponseEntity.ok().body(contatos);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Contato> buscarPorID(@PathVariable("id") Long id){
+    public ResponseEntity<ContatoResponse> buscarPorID(@PathVariable("id") Long id){
         Contato contato = contatoService.buscarPorId(id);
-        return ResponseEntity.ok().body(contato);
+        return ResponseEntity.ok().body(new ContatoResponse(contato));
     }
 
     @PostMapping

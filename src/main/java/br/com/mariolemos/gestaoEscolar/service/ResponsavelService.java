@@ -29,7 +29,7 @@ public class ResponsavelService {
         Responsavel responsavel1 = buscarPorId(id);
         responsavel1.setNome(responsavel.getNome());
         responsavel1.setParentesco(responsavel.getParentesco());
-        return responsavelRepository.save(responsavel);
+        return responsavelRepository.save(responsavel1);
     }
 
     public void excluir(Long id){

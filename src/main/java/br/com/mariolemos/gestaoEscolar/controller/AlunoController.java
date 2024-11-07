@@ -2,6 +2,7 @@ package br.com.mariolemos.gestaoEscolar.controller;
 
 import br.com.mariolemos.gestaoEscolar.model.Aluno;
 import br.com.mariolemos.gestaoEscolar.model.Colegio;
+import br.com.mariolemos.gestaoEscolar.model.dto.response.AlunoResponse;
 import br.com.mariolemos.gestaoEscolar.service.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,12 +20,12 @@ public class AlunoController {
     @GetMapping
     public ResponseEntity<List<Aluno>> buscar(){
         List<Aluno> alunos = alunoService.buscar();
-        return ResponseEntity.ok().body(alunos);
+        return ResponseEntity.ok().body((alunos));
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Aluno> buscarPorID(@PathVariable("id") Long id){
+    public ResponseEntity<AlunoResponse> buscarPorID(@PathVariable("id") Long id){
         Aluno aluno = alunoService.buscarPorId(id);
-        return ResponseEntity.ok().body(aluno);
+        return ResponseEntity.ok().body(new AlunoResponse(aluno));
     }
     @GetMapping("/colegio/{id}")
     public ResponseEntity<List<Aluno>> buscarPorColegio(@PathVariable("id") Long colegioId){

@@ -29,7 +29,7 @@ public class ContatoService {
     public Contato atualizar(Contato contato, Long id){
         Contato contato1 = buscarPorId(id);
         contato1.setTipo(contato.getTipo());
-        contato1.setNomeContato(contato.getNomeContato());
+        contato1.setContato(contato.getContato());
         return contatoRepository.save(contato);
     }
 

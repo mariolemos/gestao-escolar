@@ -21,12 +21,14 @@ public class Contato {
     @EqualsAndHashCode.Include
     @Column(name = "ID")
     private Long id;
-    @Column(name = "NOME_CONTATO")
-    private String nomeContato;
+    @Column(name = "CONTATO")
+    private String contato;
     @Column(name = "TIPO_CONTATO")
     private String tipo;
     @ManyToOne
     private Aluno aluno;
     @ManyToOne
     private Responsavel responsavel;
+    @ManyToOne
+    private Colegio colegio;
 }

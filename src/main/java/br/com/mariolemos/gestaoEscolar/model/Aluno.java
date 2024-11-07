@@ -42,6 +42,6 @@ public class Aluno extends Pessoa {
     @OneToMany
     @JoinColumn(name = "ALUNO_ID")
     private List<Contato> contatos = new ArrayList<Contato>();
-    @ManyToOne
+    @OneToOne(mappedBy = "aluno")
     private Endereco endereco;
 }

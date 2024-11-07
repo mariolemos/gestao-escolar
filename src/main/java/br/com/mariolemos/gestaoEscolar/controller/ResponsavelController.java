@@ -2,6 +2,7 @@ package br.com.mariolemos.gestaoEscolar.controller;
 
 import br.com.mariolemos.gestaoEscolar.model.Aluno;
 import br.com.mariolemos.gestaoEscolar.model.Responsavel;
+import br.com.mariolemos.gestaoEscolar.model.dto.response.ResponsavelResponse;
 import br.com.mariolemos.gestaoEscolar.service.AlunoService;
 import br.com.mariolemos.gestaoEscolar.service.ResponsavelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,9 @@ public class ResponsavelController {
         return ResponseEntity.ok().body(resposaveis);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Responsavel> buscarPorID(@PathVariable("id") Long id){
+    public ResponseEntity<ResponsavelResponse> buscarPorID(@PathVariable("id") Long id){
         Responsavel responsavel = responsavelService.buscarPorId(id);
-        return ResponseEntity.ok().body(responsavel);
+        return ResponseEntity.ok().body(new ResponsavelResponse(responsavel));
     }
 
     @PostMapping

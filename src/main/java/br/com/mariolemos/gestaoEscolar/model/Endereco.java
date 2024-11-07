@@ -1,5 +1,6 @@
 package br.com.mariolemos.gestaoEscolar.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,10 +35,17 @@ public class Endereco {
     private String cidade;
     @Column(name = "ESTADO")
     private String estado;
-    @OneToMany
-    @JoinColumn(name = "ENDERECO_ID")
-    private List<Aluno> alunos = new ArrayList<>();
-    @OneToMany
-    @JoinColumn(name = "ENDERECO_ID")
-    private List<Responsavel> responsaveis = new ArrayList<>();
+    @JsonIgnore
+    @OneToOne
+    @JoinColumn(name = "ALUNO_ID")
+    private Aluno aluno;
+    @JsonIgnore
+    @OneToOne
+    @JoinColumn(name = "RESPONSAVEL_ID")
+    private Responsavel responsavel;
+    @JsonIgnore
+    @OneToOne
+    @JoinColumn(name = "COLEGIO_ID")
+    private Colegio colegio;
+
 }

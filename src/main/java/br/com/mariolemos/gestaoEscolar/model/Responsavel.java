@@ -1,5 +1,6 @@
 package br.com.mariolemos.gestaoEscolar.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,12 +28,13 @@ public class Responsavel extends Pessoa {
     @OneToMany
     @JoinColumn(name = "RESPONSAVEL_ID")
     private List<Contrato>  contratos = new ArrayList<>();
+    @JsonIgnore
     @OneToMany
     @JoinColumn(name = "RESPONSAVEL_ID")
     private List<Aluno> alunos = new ArrayList<>();
     @OneToMany
     @JoinColumn(name = "RESPONSAVEL_ID")
     private List<Contato> contatos = new ArrayList<Contato>();
-    @ManyToOne
+    @OneToOne(mappedBy = "responsavel")
     private Endereco endereco;
 }
