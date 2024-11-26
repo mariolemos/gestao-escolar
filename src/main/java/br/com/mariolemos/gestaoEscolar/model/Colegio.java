@@ -1,5 +1,6 @@
 package br.com.mariolemos.gestaoEscolar.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +28,7 @@ public class Colegio {
     @Column(name = "HORARIO")
     private Timestamp horario;
     @OneToMany
+    @JsonIgnore
     @JoinColumn(name = "COLEGIO_ID")
     private List<Aluno> alunos = new ArrayList<Aluno>();
     @OneToMany

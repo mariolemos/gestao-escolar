@@ -2,6 +2,7 @@ package br.com.mariolemos.gestaoEscolar.controller;
 
 import br.com.mariolemos.gestaoEscolar.model.Aluno;
 import br.com.mariolemos.gestaoEscolar.model.Colegio;
+import br.com.mariolemos.gestaoEscolar.model.dto.request.AlunoRequest;
 import br.com.mariolemos.gestaoEscolar.model.dto.response.AlunoResponse;
 import br.com.mariolemos.gestaoEscolar.service.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,9 @@ public class AlunoController {
     private AlunoService alunoService;
 
     @GetMapping
-    public ResponseEntity<List<Aluno>> buscar(){
+    public ResponseEntity<List<AlunoResponse>> buscar(){
         List<Aluno> alunos = alunoService.buscar();
-        return ResponseEntity.ok().body((alunos));
+        return ResponseEntity.ok().body(AlunoResponse.of(alunos));
     }
     @GetMapping("/{id}")
     public ResponseEntity<AlunoResponse> buscarPorID(@PathVariable("id") Long id){
@@ -34,15 +35,15 @@ public class AlunoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Aluno> atualizar(@RequestBody Aluno aluno, @PathVariable("id") Long id){
-        Aluno aluno1 = alunoService.atualizar(aluno, id);
-        return ResponseEntity.ok().body(aluno1);
+    public ResponseEntity<AlunoResponse> atualizar(@RequestBody AlunoRequest alunoRequest, @PathVariable("id") Long id){
+        Aluno aluno1 = alunoService.atualizar(AlunoRequest.of(alunoRequest), id);
+        return ResponseEntity.ok().body(new AlunoResponse(aluno1));
     }
 
     @PostMapping
-    public ResponseEntity<Aluno> incluir(@RequestBody Aluno aluno){
-        aluno = alunoService.incluir(aluno);
-        return ResponseEntity.ok().body(aluno);
+    public ResponseEntity<AlunoResponse> incluir(@RequestBody AlunoRequest alunoRequest){
+       Aluno aluno = alunoService.incluir(AlunoRequest.of(alunoRequest));
+        return ResponseEntity.ok().body(new AlunoResponse(aluno));
     }
 
     @DeleteMapping(value = "/{id}")

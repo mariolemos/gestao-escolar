@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class AlunoResponse extends PessoaDto {
 
-    private Long id;
     private String turno;
     private String serie;
     private String turma;
@@ -26,10 +25,11 @@ public class AlunoResponse extends PessoaDto {
     private Boolean ativo;
     private String responsavel;
     private String colegio;
+    private List<ContatoResponse> contatos = new ArrayList<ContatoResponse>();
 
     public AlunoResponse(Aluno aluno){
 
-        this.id = aluno.getId();
+        super.setId(aluno.getId());
         this.turno = aluno.getTurno();
         this.serie = aluno.getSerie();
         this.turma = aluno.getTurma();
@@ -37,13 +37,20 @@ public class AlunoResponse extends PessoaDto {
         this.nomeDaMae = aluno.getNomeDaMae();
         this.convenioMedico = aluno.getConvenioMedico();
         this.ativo = aluno.getAtivo();
+
         super.setNome(aluno.getNome());
+        super.setCpf(aluno.getCpf());
+        super.setRg(aluno.getRg());
+        super.setDtNascimento(aluno.getDtNascimento());
 
         if (aluno.getColegio() != null) {
             this.colegio = aluno.getColegio().getNome();
         }
         if (aluno.getResponsavel() != null) {
             this.responsavel = aluno.getResponsavel().getNome();
+        }
+        if (aluno.getContatos() != null) {
+            this.contatos = ContatoResponse.of(aluno.getContatos());
         }
 
     }

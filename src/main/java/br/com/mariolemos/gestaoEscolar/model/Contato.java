@@ -1,5 +1,7 @@
 package br.com.mariolemos.gestaoEscolar.model;
 
+import br.com.mariolemos.gestaoEscolar.enumerations.TipoContato;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,11 +26,13 @@ public class Contato {
     @Column(name = "CONTATO")
     private String contato;
     @Column(name = "TIPO_CONTATO")
-    private String tipo;
+    @Enumerated(EnumType.STRING)
+    private TipoContato tipo;
     @ManyToOne
     private Aluno aluno;
     @ManyToOne
     private Responsavel responsavel;
+    @JsonIgnore
     @ManyToOne
     private Colegio colegio;
 }

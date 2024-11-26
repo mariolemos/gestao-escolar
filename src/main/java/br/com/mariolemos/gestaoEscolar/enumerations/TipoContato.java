@@ -26,7 +26,7 @@ public enum TipoContato {
 
     public static TipoContato find(String descricao){
         for (TipoContato tipoContato : TipoContato.values()) {
-            if(tipoContato.getDescricao().equals(descricao)){
+            if(tipoContato.getDescricao().equalsIgnoreCase(descricao)){
                 return tipoContato;
             }
         }

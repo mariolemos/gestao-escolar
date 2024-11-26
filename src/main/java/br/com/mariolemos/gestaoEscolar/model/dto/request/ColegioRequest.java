@@ -1,11 +1,8 @@
-package br.com.mariolemos.gestaoEscolar.model.dto.response;
+package br.com.mariolemos.gestaoEscolar.model.dto.request;
 
-;
 import br.com.mariolemos.gestaoEscolar.model.Colegio;
-
 import br.com.mariolemos.gestaoEscolar.model.Contato;
 import br.com.mariolemos.gestaoEscolar.model.Endereco;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,22 +14,23 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ColegioResponse {
+public class ColegioRequest {
 
     private Long id;
     private String nome;
     private Timestamp horario;
-    private String aluno;
     private List<Contato> contatos = new ArrayList<>();
     private Endereco endereco;
 
-    public ColegioResponse(Colegio colegio){
-        this.id = colegio.getId();
-        this.nome = colegio.getNome();
-        this.horario = colegio.getHorario();
-        this.horario = colegio.getHorario();
-        this.contatos = colegio.getContatos();
-        this.endereco = colegio.getEndereco();
+    public static Colegio of(ColegioRequest colegioRequest){
+
+        Colegio colegio = new Colegio();
+
+        colegio.setNome(colegioRequest.getNome());
+        colegio.setHorario(colegioRequest.getHorario());
+
+        return colegio;
 
     }
+
 }

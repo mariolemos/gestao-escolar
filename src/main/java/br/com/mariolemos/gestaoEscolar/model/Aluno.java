@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,13 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "ALUNO")
-public class Aluno extends Pessoa {
+public class Aluno extends Pessoa  {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @EqualsAndHashCode.Include
-//    @Column(name = "ID")
-//    private Long id;
     @Column(name = "TURNO")
     private String turno;
     @Column(name = "SERIE")
@@ -39,7 +35,7 @@ public class Aluno extends Pessoa {
     private Responsavel responsavel;
     @ManyToOne
     private Colegio colegio;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "ALUNO_ID")
     private List<Contato> contatos = new ArrayList<Contato>();
     @OneToOne(mappedBy = "aluno")
