@@ -29,6 +29,7 @@ public class ContatoRequest {
 
         contato.setContato(contatoRequest.getContato());
         contato.setTipo(TipoContato.find(contatoRequest.getTipo()));
+        contato.setId(contatoRequest.getId());
 
         return contato;
     }

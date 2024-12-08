@@ -5,6 +5,7 @@ import br.com.mariolemos.gestaoEscolar.model.Colegio;
 import br.com.mariolemos.gestaoEscolar.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ public class AlunoService {
 
     @Autowired
     private AlunoRepository alunoRepository;
+    @Autowired
+    private ContatoService contatoService;
 
     public List<Aluno> buscar(){
         List<Aluno> alunos = alunoRepository.findAll();
@@ -30,6 +33,7 @@ public class AlunoService {
     public Aluno incluir(Aluno aluno){
         return alunoRepository.save(aluno);
     }
+    @Transactional
     public Aluno atualizar(Aluno aluno, Long id){
         Aluno aluno1 = buscarPorId(id);
         aluno1.setNomeDoPai(aluno.getNomeDoPai());
@@ -42,7 +46,9 @@ public class AlunoService {
         aluno1.setSerie(aluno.getSerie());
         aluno1.setTurma(aluno.getTurma());
         aluno1.setTurno(aluno.getTurno());
-       // aluno1.setContatos(aluno.getContatos());
+        contatoService.excluirContatosAluno(id);
+        aluno1.setContatos(aluno.getContatos());
+
         return alunoRepository.save(aluno1);
     }
 

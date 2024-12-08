@@ -1,11 +1,13 @@
 package br.com.mariolemos.gestaoEscolar.service;
 
+import br.com.mariolemos.gestaoEscolar.model.Aluno;
 import br.com.mariolemos.gestaoEscolar.model.Contato;
 import br.com.mariolemos.gestaoEscolar.model.Responsavel;
 import br.com.mariolemos.gestaoEscolar.repository.ContatoRepository;
 import br.com.mariolemos.gestaoEscolar.repository.ResponsavelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -32,10 +34,11 @@ public class ContatoService {
         contato1.setContato(contato.getContato());
         return contatoRepository.save(contato);
     }
-
     public void excluir(Long id){
         contatoRepository.deleteById(id);
     }
-
-
+    @Transactional
+    public void excluirContatosAluno(Long alunoId){
+        contatoRepository.deleteByAlunoId(alunoId);
+    }
 }
