@@ -16,13 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "RESPONSAVEL")
 public class Responsavel extends Pessoa {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @EqualsAndHashCode.Include
-//    @Column(name = "ID")
-//    private Long id;
-//    @Column(name = "NOME")
-//    private String nome;
+
     @Column(name = "PARENTESCO")
     private String parentesco;
     @OneToMany
@@ -32,7 +26,7 @@ public class Responsavel extends Pessoa {
     @OneToMany
     @JoinColumn(name = "RESPONSAVEL_ID")
     private List<Aluno> alunos = new ArrayList<>();
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "RESPONSAVEL_ID")
     private List<Contato> contatos = new ArrayList<Contato>();
     @OneToOne(mappedBy = "responsavel")
