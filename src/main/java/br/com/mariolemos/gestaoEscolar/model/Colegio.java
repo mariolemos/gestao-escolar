@@ -31,7 +31,7 @@ public class Colegio {
     @JsonIgnore
     @JoinColumn(name = "COLEGIO_ID")
     private List<Aluno> alunos = new ArrayList<Aluno>();
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "COLEGIO_ID")
     private List<Contato> contatos = new ArrayList<Contato>();
     @OneToOne(mappedBy = "colegio")

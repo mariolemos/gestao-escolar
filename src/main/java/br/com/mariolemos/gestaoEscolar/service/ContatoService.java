@@ -45,4 +45,8 @@ public class ContatoService {
     public void excluirContatosResponsavel(Long responsavelId){
         contatoRepository.deleteByResponsavelId(responsavelId);
     }
+    @Transactional
+    public void excluirContatosColegio(Long colegioId) {
+        contatoRepository.deleteByColegioId(colegioId);
+    }
 }

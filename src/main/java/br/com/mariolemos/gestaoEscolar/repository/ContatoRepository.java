@@ -23,4 +23,9 @@ public interface ContatoRepository extends JpaRepository<Contato, Long> {
     @Query("delete from Contato r where r.responsavel.id = :responsavelId")
     void deleteByResponsavelId(@PathParam("responsavelId") Long responsavelId);
 
+    @Modifying
+    @Transactional
+    @Query("delete from Contato c where c.colegio.id = :colegioId")
+    void deleteByColegioId(@PathParam("colegioId") Long colegioId);
+
 }

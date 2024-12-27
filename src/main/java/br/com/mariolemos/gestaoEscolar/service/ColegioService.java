@@ -14,6 +14,8 @@ public class ColegioService {
 
     @Autowired
     private ColegioRepository colegioRepository;
+    @Autowired
+    private ContatoService contatoService;
 
     public List<Colegio> buscar(){
         List<Colegio> colegios = colegioRepository.findAll();
@@ -30,6 +32,9 @@ public class ColegioService {
         Colegio colegio1 = buscarPorId(id);
         colegio1.setNome(colegio.getNome());
         colegio1.setHorario(colegio.getHorario());
+        contatoService.excluirContatosColegio(id);
+        colegio1.setContatos(colegio.getContatos());
+
         return colegioRepository.save(colegio1);
     }
 
