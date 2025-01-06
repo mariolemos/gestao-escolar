@@ -19,9 +19,9 @@ public class ResponsavelController {
     private ResponsavelService responsavelService;
 
     @GetMapping
-    public ResponseEntity<List<Responsavel>> buscar(){
+    public ResponseEntity<List<ResponsavelResponse>> buscar(){
         List<Responsavel> resposaveis = responsavelService.buscar();
-        return ResponseEntity.ok().body(resposaveis);
+        return ResponseEntity.ok().body(ResponsavelResponse.of(resposaveis));
     }
     @GetMapping("/{id}")
     public ResponseEntity<ResponsavelResponse> buscarPorID(@PathVariable("id") Long id){
@@ -35,9 +35,9 @@ public class ResponsavelController {
         return ResponseEntity.ok().body(responsavel);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Responsavel> atualizar(@RequestBody Responsavel responsavel, @PathVariable("id") Long id){
+    public ResponseEntity<ResponsavelResponse> atualizar(@RequestBody Responsavel responsavel, @PathVariable("id") Long id){
         Responsavel responsavel1 = responsavelService.atualizar(responsavel, id);
-        return ResponseEntity.ok().body(responsavel1);
+        return ResponseEntity.ok().body(new ResponsavelResponse(responsavel1));
     }
 
     @DeleteMapping(value = "/{id}")

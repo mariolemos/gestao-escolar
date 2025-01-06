@@ -34,6 +34,7 @@ public class ResponsavelService {
         Responsavel responsavel1 = buscarPorId(id);
         responsavel1.setNome(responsavel.getNome());
         responsavel1.setParentesco(responsavel.getParentesco());
+        responsavel1.setAlunos(responsavel.getAlunos());
         contatoService.excluirContatosResponsavel(id);
         responsavel1.setContatos(responsavel.getContatos());
         return responsavelRepository.save(responsavel1);

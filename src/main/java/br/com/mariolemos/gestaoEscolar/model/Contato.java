@@ -28,8 +28,10 @@ public class Contato {
     @Column(name = "TIPO_CONTATO")
     @Enumerated(EnumType.STRING)
     private TipoContato tipo;
+    @JsonIgnore
     @ManyToOne
     private Aluno aluno;
+    @JsonIgnore
     @ManyToOne
     private Responsavel responsavel;
     @JsonIgnore

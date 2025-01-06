@@ -29,15 +29,16 @@ public class AlunoController {
         return ResponseEntity.ok().body(new AlunoResponse(aluno));
     }
     @GetMapping("/colegio/{id}")
-    public ResponseEntity<List<Aluno>> buscarPorColegio(@PathVariable("id") Long colegioId){
+    public ResponseEntity<List<AlunoResponse>> buscarPorColegio(@PathVariable("id") Long colegioId){
         List<Aluno> alunos = alunoService.buscarAlunoPorColegio(colegioId);
-        return ResponseEntity.ok().body(alunos);
+        return ResponseEntity.ok().body(AlunoResponse.of(alunos));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<AlunoResponse> atualizar(@RequestBody AlunoRequest alunoRequest, @PathVariable("id") Long id){
-        Aluno aluno1 = alunoService.atualizar(AlunoRequest.of(alunoRequest), id);
-        return ResponseEntity.ok().body(new AlunoResponse(aluno1));
+        Aluno aluno = AlunoRequest.of(alunoRequest);
+        aluno = alunoService.atualizar(aluno, id);
+        return ResponseEntity.ok().body(new AlunoResponse(aluno));
     }
 
     @PostMapping

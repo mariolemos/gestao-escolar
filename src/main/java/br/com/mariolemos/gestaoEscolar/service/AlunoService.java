@@ -46,6 +46,7 @@ public class AlunoService {
         aluno1.setSerie(aluno.getSerie());
         aluno1.setTurma(aluno.getTurma());
         aluno1.setTurno(aluno.getTurno());
+        aluno1.setAtivo(aluno.getAtivo());
         contatoService.excluirContatosAluno(id);
         aluno1.setContatos(aluno.getContatos());
         return alunoRepository.save(aluno1);

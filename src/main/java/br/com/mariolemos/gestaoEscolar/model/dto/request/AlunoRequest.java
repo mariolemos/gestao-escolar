@@ -48,6 +48,7 @@ public class AlunoRequest extends PessoaDto {
         aluno.setConvenioMedico(alunoRequest.getConvenioMedico());
         aluno.setCpf(alunoRequest.getCpf());
         aluno.setRg(alunoRequest.getRg());
+        aluno.setAtivo(alunoRequest.getAtivo());
         aluno.setDtNascimento(alunoRequest.getDtNascimento());
         aluno.setColegio(colegio);
         aluno.setResponsavel(responsavel);

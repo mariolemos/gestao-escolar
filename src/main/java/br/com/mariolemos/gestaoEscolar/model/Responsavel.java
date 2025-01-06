@@ -22,7 +22,6 @@ public class Responsavel extends Pessoa {
     @OneToMany
     @JoinColumn(name = "RESPONSAVEL_ID")
     private List<Contrato>  contratos = new ArrayList<>();
-    @JsonIgnore
     @OneToMany
     @JoinColumn(name = "RESPONSAVEL_ID")
     private List<Aluno> alunos = new ArrayList<>();

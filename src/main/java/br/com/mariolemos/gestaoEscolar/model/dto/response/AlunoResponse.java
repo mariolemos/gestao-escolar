@@ -30,6 +30,11 @@ public class AlunoResponse extends PessoaDto {
     public AlunoResponse(Aluno aluno){
 
         super.setId(aluno.getId());
+        super.setNome(aluno.getNome());
+        super.setCpf(aluno.getCpf());
+        super.setRg(aluno.getRg());
+        super.setDtNascimento(aluno.getDtNascimento());
+
         this.turno = aluno.getTurno();
         this.serie = aluno.getSerie();
         this.turma = aluno.getTurma();
@@ -37,11 +42,6 @@ public class AlunoResponse extends PessoaDto {
         this.nomeDaMae = aluno.getNomeDaMae();
         this.convenioMedico = aluno.getConvenioMedico();
         this.ativo = aluno.getAtivo();
-
-        super.setNome(aluno.getNome());
-        super.setCpf(aluno.getCpf());
-        super.setRg(aluno.getRg());
-        super.setDtNascimento(aluno.getDtNascimento());
 
         if (aluno.getColegio() != null) {
             this.colegio = aluno.getColegio().getNome();

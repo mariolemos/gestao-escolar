@@ -34,6 +34,10 @@ public class ResponsavelResponse {
         if (responsavel.getAlunos() != null) {
             this.alunos = AlunoResponse.of(responsavel.getAlunos());
         }
+
+    }
+    public static List<ResponsavelResponse> of(List<Responsavel> responsaveis) {
+        return responsaveis.stream().map(resp -> new ResponsavelResponse(resp)).collect(Collectors.toList());
     }
 
 
