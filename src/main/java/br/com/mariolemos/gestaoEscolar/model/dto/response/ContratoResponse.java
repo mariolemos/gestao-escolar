@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @AllArgsConstructor
@@ -27,9 +28,9 @@ public class ContratoResponse {
     private String formaPagamento;
     private LocalDate dtInicial;
     private LocalDate dtFinal;
-    private Responsavel responsavel;
+    private String responsavel;
     private Boolean ativo;
-    private List<Aluno> alunos = new ArrayList<>();
+    //private List<Aluno> alunos = new ArrayList<>();
 
     public ContratoResponse(Contrato contrato){
         this.id = contrato.getId();
@@ -39,7 +40,16 @@ public class ContratoResponse {
         this.formaPagamento = contrato.getFormaPagamento();
         this.dtInicial = contrato.getDtInicial();
         this.dtFinal = contrato.getDtFinal();
-        this.responsavel = contrato.getResponsavel();
         this.ativo = contrato.getAtivo();
+
+        if (contrato.getResponsavel() != null) {
+            this.responsavel = contrato.getResponsavel().getNome();
+        }
+
+    }
+
+
+    public static List<ContratoResponse> of(List<Contrato> contratos) {
+        return contratos.stream().map(contr -> new ContratoResponse(contr)).collect(Collectors.toList());
     }
 }

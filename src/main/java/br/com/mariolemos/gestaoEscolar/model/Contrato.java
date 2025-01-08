@@ -35,9 +35,9 @@ public class Contrato {
     private Responsavel responsavel;
     @Column(name = "ATIVO")
     private Boolean ativo;
-    @OneToMany
-    @JoinColumn(name = "ALUNO_ID")
-    private List<Aluno> alunos = new ArrayList<>();
+//    @OneToMany
+//    @JoinColumn(name = "ALUNO_ID")
+//    private List<Aluno> alunos = new ArrayList<>();
 
     public Contrato calcularMensalidade(double valor){
         return null;

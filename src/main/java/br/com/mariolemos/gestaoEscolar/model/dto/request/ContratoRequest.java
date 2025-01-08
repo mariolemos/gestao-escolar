@@ -30,7 +30,7 @@ public class ContratoRequest {
     private LocalDate dtFinal;
     private Responsavel responsavel;
     private Boolean ativo;
-    private List<Aluno> alunos = new ArrayList<>();
+    //private List<Aluno> alunos = new ArrayList<>();
     public  static Contato of(ContratoRequest contatoRequest){
 
         Contato contato = new Contato();
@@ -42,4 +42,5 @@ public class ContratoRequest {
     public static List<Contato> of(List<ContratoRequest> contatos) {
         return contatos.stream().map(ContratoRequest::of).collect(Collectors.toList());
     }
+
 }

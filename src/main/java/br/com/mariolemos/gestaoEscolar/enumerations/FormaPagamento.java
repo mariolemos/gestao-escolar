@@ -30,7 +30,7 @@ public enum FormaPagamento {
                 return tipoContato;
             }
         }
-        throw new IllegalArgumentException("TFormaPagamento não encontrada");
+        throw new IllegalArgumentException("FormaPagamento não encontrada");
     }
 
 
