@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class Colegio {
     @Column(name = "NOME")
     private String nome;
     @Column(name = "HORARIO")
-    private Timestamp horario;
+    private LocalTime horario;
     @OneToMany
     @JsonIgnore
     @JoinColumn(name = "COLEGIO_ID")

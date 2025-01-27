@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class ColegioRequest {
 
     private Long id;
     private String nome;
-    private Timestamp horario;
+    private LocalTime horario;
     private List<Contato> contatos = new ArrayList<>();
     private Endereco endereco;
 
