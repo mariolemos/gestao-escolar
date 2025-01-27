@@ -56,6 +56,6 @@ public class AlunoService {
     public void excluir(Long id){
         alunoRepository.deleteById(id);
     }
-
+    
 
 }
