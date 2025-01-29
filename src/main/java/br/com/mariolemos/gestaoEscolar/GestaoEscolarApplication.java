@@ -1,8 +1,6 @@
 package br.com.mariolemos.gestaoEscolar;
 
-import br.com.mariolemos.gestaoEscolar.model.Pessoa;
 import org.springdoc.core.GroupedOpenApi;
-import org.springdoc.core.SwaggerUiConfigParameters;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

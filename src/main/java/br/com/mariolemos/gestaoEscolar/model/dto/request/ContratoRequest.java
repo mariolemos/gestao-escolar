@@ -1,8 +1,10 @@
 package br.com.mariolemos.gestaoEscolar.model.dto.request;
 
+import br.com.mariolemos.gestaoEscolar.enumerations.FormaPagamento;
 import br.com.mariolemos.gestaoEscolar.enumerations.TipoContato;
 import br.com.mariolemos.gestaoEscolar.model.Aluno;
 import br.com.mariolemos.gestaoEscolar.model.Contato;
+import br.com.mariolemos.gestaoEscolar.model.Contrato;
 import br.com.mariolemos.gestaoEscolar.model.Responsavel;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
@@ -25,22 +27,27 @@ public class ContratoRequest {
     private Long id;
     private double valorContratual;
     private LocalDate dtPagamento;
-    private String formaPagamento;
+    private int formaPagamento;
     private LocalDate dtInicial;
     private LocalDate dtFinal;
-    private Responsavel responsavel;
+    private Long responsavelId;
     private Boolean ativo;
     //private List<Aluno> alunos = new ArrayList<>();
-    public  static Contato of(ContratoRequest contatoRequest){
+    public  static Contrato of(ContratoRequest contratoRequest){
 
-        Contato contato = new Contato();
-
-
-        return contato;
+        Contrato contrato = new Contrato();
+        contrato.setAtivo(contratoRequest.getAtivo());
+        contrato.setDtInicial(contratoRequest.getDtInicial());
+        contrato.setDtFinal(contratoRequest.getDtFinal());
+        contrato.setDtPagamento(contratoRequest.getDtPagamento());
+        contrato.setValorContratual(contratoRequest.getValorContratual());
+        contrato.setFormaPagamento(FormaPagamento.find(contratoRequest.getFormaPagamento()));
+        contrato.setResponsavel(new Responsavel(contratoRequest.getResponsavelId()));
+        return contrato;
     }
 
-    public static List<Contato> of(List<ContratoRequest> contatos) {
-        return contatos.stream().map(ContratoRequest::of).collect(Collectors.toList());
+    public static List<Contrato> of(List<ContratoRequest> contratos) {
+        return contratos.stream().map(ContratoRequest::of).collect(Collectors.toList());
     }
 
 }

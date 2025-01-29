@@ -30,4 +30,10 @@ public class Responsavel extends Pessoa {
     private List<Contato> contatos = new ArrayList<Contato>();
     @OneToOne(mappedBy = "responsavel")
     private Endereco endereco;
+
+    public Responsavel(Long id){
+        this.setId(id);
+    }
 }
+
+

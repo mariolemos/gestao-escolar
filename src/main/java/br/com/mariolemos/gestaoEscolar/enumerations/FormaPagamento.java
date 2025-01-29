@@ -2,9 +2,11 @@ package br.com.mariolemos.gestaoEscolar.enumerations;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public enum FormaPagamento {
 
     AVISTA(0, "AVISTA"),
@@ -26,7 +28,7 @@ public enum FormaPagamento {
 
     public static FormaPagamento find(String descricao){
         for (FormaPagamento tipoContato : FormaPagamento.values()) {
-            if(tipoContato.getDescricao().equals(descricao)){
+            if(tipoContato.getDescricao().equalsIgnoreCase(descricao)){
                 return tipoContato;
             }
         }

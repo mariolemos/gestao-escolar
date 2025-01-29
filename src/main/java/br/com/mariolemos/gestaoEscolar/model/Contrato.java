@@ -1,5 +1,6 @@
 package br.com.mariolemos.gestaoEscolar.model;
 
+import br.com.mariolemos.gestaoEscolar.enumerations.FormaPagamento;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +8,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -26,7 +25,8 @@ public class Contrato {
     @Column(name = "DATA_PAGAMENTO")
     private LocalDate dtPagamento;
     @Column(name = "FORMA_PAGAMENTO")
-    private String formaPagamento;
+    @Enumerated(value = EnumType.STRING)
+    private FormaPagamento formaPagamento;
     @Column(name = "DATA_INICIAL")
     private LocalDate dtInicial;
     @Column(name = "DATA_FINAL")
@@ -40,6 +40,16 @@ public class Contrato {
 //    private List<Aluno> alunos = new ArrayList<>();
 
     public Contrato calcularMensalidade(double valor){
+        int parcelas;
+
+//        Contrato contrato = new Contrato();
+//
+//        contrato.setValorContratual(valor);
+
+       // parcelas = dtInicial.getMonthValue() - dtInicial.getMonthValue();
+
+        //System.out.println(parcelas);
+
         return null;
     }
 
