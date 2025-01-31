@@ -1,12 +1,14 @@
 package br.com.mariolemos.gestaoEscolar.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
 
-import javax.naming.Name;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
