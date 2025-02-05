@@ -7,7 +7,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -21,7 +24,7 @@ public class Contrato {
     @Column(name = "ID")
     private Long id;
     @Column(name = "VALOR_CONTRATUAL")
-    private double valorContratual;
+    private BigDecimal valorContratual;
     @Column(name = "DATA_PAGAMENTO")
     private LocalDate dtPagamento;
     @Column(name = "FORMA_PAGAMENTO")
@@ -35,22 +38,18 @@ public class Contrato {
     private Responsavel responsavel;
     @Column(name = "ATIVO")
     private Boolean ativo;
-//    @OneToMany
-//    @JoinColumn(name = "ALUNO_ID")
-//    private List<Aluno> alunos = new ArrayList<>();
+    private Integer diaPagamento;
+    @Column(name = "VALOR_MENSAL")
+    private BigDecimal valorMensal;
+    @Column(name = "ALUNOS")
+    private String listaAlunos;
+    @Transient
+    private List<Long> alunos = new ArrayList<Long>();
 
-    public Contrato calcularMensalidade(double valor){
-        int parcelas;
-
-//        Contrato contrato = new Contrato();
-//
-//        contrato.setValorContratual(valor);
-
-       // parcelas = dtInicial.getMonthValue() - dtInicial.getMonthValue();
-
-        //System.out.println(parcelas);
-
-        return null;
+    public void calcularMensalidade(){
+        int parcelas = dtFinal.getDayOfMonth() - dtInicial.getDayOfMonth() + 1;
+        BigDecimal valorMensal = valorContratual;
+        this.valorMensal = valorMensal.divide(new BigDecimal(parcelas));
     }
 
 }

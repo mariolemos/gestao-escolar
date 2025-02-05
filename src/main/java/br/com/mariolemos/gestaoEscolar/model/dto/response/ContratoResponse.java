@@ -6,7 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,14 +19,15 @@ import java.util.stream.Collectors;
 public class ContratoResponse {
 
     private Long id;
-    private double valorContratual;
+    private BigDecimal valorContratual;
     private LocalDate dtPagamento;
     private FormaPagamento formaPagamento;
     private LocalDate dtInicial;
     private LocalDate dtFinal;
     private String responsavel;
     private Boolean ativo;
-    //private List<Aluno> alunos = new ArrayList<>();
+    private BigDecimal valorMensal;
+    private List<String> alunos = new ArrayList<>();
 
     public ContratoResponse(Contrato contrato){
         this.id = contrato.getId();
@@ -33,6 +37,8 @@ public class ContratoResponse {
         this.dtInicial = contrato.getDtInicial();
         this.dtFinal = contrato.getDtFinal();
         this.ativo = contrato.getAtivo();
+        this.valorMensal = contrato.getValorMensal();
+        this.alunos = Arrays.stream(contrato.getListaAlunos().split(",")).toList();
 
         if (contrato.getResponsavel() != null) {
             this.responsavel = contrato.getResponsavel().getNome();

@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +26,15 @@ import java.util.stream.Collectors;
 public class ContratoRequest {
 
     private Long id;
-    private double valorContratual;
+    private BigDecimal valorContratual;
     private LocalDate dtPagamento;
     private int formaPagamento;
     private LocalDate dtInicial;
     private LocalDate dtFinal;
     private Long responsavelId;
     private Boolean ativo;
-    //private List<Aluno> alunos = new ArrayList<>();
+
+    private List<Long> alunos = new ArrayList<>();
     public  static Contrato of(ContratoRequest contratoRequest){
 
         Contrato contrato = new Contrato();
@@ -42,6 +44,8 @@ public class ContratoRequest {
         contrato.setDtPagamento(contratoRequest.getDtPagamento());
         contrato.setValorContratual(contratoRequest.getValorContratual());
         contrato.setFormaPagamento(FormaPagamento.find(contratoRequest.getFormaPagamento()));
+        //contrato.setListaAlunos(String.join(", ", contratoRequest.getAlunos()));
+        contrato.setAlunos(contratoRequest.getAlunos());
         contrato.setResponsavel(new Responsavel(contratoRequest.getResponsavelId()));
         return contrato;
     }
